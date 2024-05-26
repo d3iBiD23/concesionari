@@ -1,0 +1,133 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="concesionari.list">
+      <field name="name">Concesionari list</field>
+      <field name="model">concesionari.concesionari</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="cif" string="CIF" />
+          <field name="name" string="Nom del concesionari" />
+          <field name="segona_ma" string="Vehicles de segona ma" />
+          <field name="cars" string="Nombre de vehicles" />
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="concesionari.view_form_concesionari">
+      <field name="name">Concesionari form</field>
+      <field name="model">concesionari.concesionari</field>
+      <field name="arch" type="xml">
+        <form string="Concesionari Nou">
+          <sheet>
+            <group colspan="2">
+              <group>
+                <separator string="Dades Concesionari" />
+                <field name="image_concesionari" widget="image" class="oe_left oe_avatar"
+                  string="Imatge concesionari" />
+                <field name="cif" string="CIF" />
+                <field name="name" string="Nom concesionari" />
+                <field name="address" string="Direcció" />
+                <field name="segona_ma" string="Vehicles de segona ma" />
+              </group>
+              <group>
+                <separator string="Dades CEO" />
+                <field name="nom_ceo" string="Nom del CEO" />
+                <field name="dni" string="DNI" />
+              </group>
+
+              <notebook>
+                <page string="Vehicles">
+                  <field name="vehicles" widget="one2many_list" />
+                </page>
+                <page string="Descripció">
+                  <field name="description"
+                    placeholder="Afegeix una descripció del teu concesionari..." />
+                </page>
+              </notebook>
+
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Cotxes-->
+    <record model="ir.ui.view" id="concesionari.list_cotxe">
+      <field name="name">Concesionari list</field>
+      <field name="model">concesionari.cotxe</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="marca" string="Marca" />
+          <field name="model" string="Model del vehicle" />
+          <field name="preu" string="Preu" />
+          <field name="segona_ma" string="Vehicle de segona ma" />
+        </tree>
+      </field>
+    </record>
+
+    <!-- Cotxes-->
+    <record model="ir.ui.view" id="concesionari.view_form_cotxe">
+      <field name="name">Vehicle form</field>
+      <field name="model">concesionari.cotxe</field>
+      <field name="arch" type="xml">
+        <form string="Vehicle Nou">
+          <sheet>
+            <group colspan="1">
+              <group>
+                <separator string="Dades Vehicle" />
+                <field name="image_cotxe" widget="image" class="oe_left oe_avatar"
+                  string="Imatge Vehicle" />
+                <field name="marca" string="Marca" />
+                <field name="model" string="Model" />
+                <field name="preu" string="Preu" />
+                <field name="segona_ma" string="Vehicle de segona ma" />
+                <field name="description" string="Descripció del vehicle" />
+                <field name="concesionari" widget="selection" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- Report Imprimir-->
+    <report
+    id="concesionari_report"
+    model="concesionari.concesionari"
+    string="Informe Concesionari"
+    report_type="qweb-html"
+    name="concesionari.report_concesionari_template"
+    file="concesionari.report_concesionari_template"
+    print_report_name="'Informe de Concesionari - %s' % (object.name)"
+    />
+
+    <!-- Cotxes-->
+    <record model="ir.actions.act_window" id="concesionari.action_window_cotxe">
+      <field name="name">Vehicle</field>
+      <field name="res_model">concesionari.cotxe</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="concesionari.action_window">
+      <field name="name">Concesionaris</field>
+      <field name="res_model">concesionari.concesionari</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Concesionari" id="concesionari.menu_root" />
+    <!-- menu categories -->
+    <menuitem name="Gestió de Concesionaris" id="concesionari.menu_1"
+      parent="concesionari.menu_root" />
+
+    <menuitem name="Gestió de Vehicles" id="concesionari.menu_2" parent="concesionari.menu_root" />
+    <!-- actions -->
+    <menuitem name="Concesionaris" id="concesionari.menu_1_list" parent="concesionari.menu_1"
+      action="concesionari.action_window" />
+
+    <menuitem name="Vehicles" id="concesionari.menu_2_list" parent="concesionari.menu_2"
+      action="concesionari.action_window_cotxe" />
+  </data>
+</odoo>

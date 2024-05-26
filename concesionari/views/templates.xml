@@ -1,0 +1,52 @@
+<odoo>
+    <template id="report_concesionari_template">
+        <t t-call="web.basic_layout">
+            <t t-set="lang" t-value="o_lang"/>
+            <t t-foreach="docs" t-as="doc">
+                <div class="page">
+                    <!-- Concesionari Information -->
+                    <h2>Informació del Concesionari</h2>
+                    <img t-if="doc.image_concesionari" t-att-src="'/web/image/concesionari.concesionari/' + str(doc.id) + '/image_concesionari'" style="max-width: 100px;"/>
+                    <p><strong>Nom:</strong> <t t-esc="doc.name"/></p>
+                    <p><strong>CIF:</strong> <t t-esc="doc.cif"/></p>
+                    <p><strong>Direcció:</strong> <t t-esc="doc.address"/></p>
+                    <p><strong>Vehicles de segona mà:</strong> <t t-esc="doc.segona_ma and 'Sí' or 'No'"/></p>
+                    <p><strong>Nombre de vehicles:</strong> <t t-esc="doc.cars"/></p>
+                    <p><strong>Nom del CEO:</strong> <t t-esc="doc.nom_ceo"/></p>
+                    <p><strong>DNI:</strong> <t t-esc="doc.dni"/></p>
+                    <p><strong>Descripció:</strong></p>
+                    <p><t t-esc="doc.description"/></p>
+
+                    <!-- Cotxes Information -->
+                    <h2>Vehicles</h2>
+                    <table class="table table-sm table-hover">
+                        <thead>
+                            <tr>
+                                <th>Imatge</th>
+                                <th>Marca</th>
+                                <th>Model</th>
+                                <th>Preu</th>a
+                                <th>Vehicle de segona mà</th>
+                                <th>Descripció</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="doc.vehicles" t-as="vehicle">
+                                <tr>
+                                    <td>
+                                        <img t-if="vehicle.image_cotxe" t-att-src="'/web/image/concesionari.cotxe/' + str(vehicle.id) + '/image_cotxe'" style="max-width: 100px;"/>
+                                    </td>
+                                    <td><t t-esc="vehicle.marca"/></td>
+                                    <td><t t-esc="vehicle.model"/></td>
+                                    <td><t t-esc="vehicle.preu"/></td>
+                                    <td><t t-esc="vehicle.segona_ma and 'Sí' or 'No'"/></td>
+                                    <td><t t-esc="vehicle.description"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_concesionari_concesionari,concesionari.concesionari,model_concesionari_concesionari,base.group_user,1,1,1,1
+access_concesionari_cotxe,concesionari.cotxe,model_concesionari_cotxe,base.group_user,1,1,1,1
