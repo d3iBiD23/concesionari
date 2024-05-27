@@ -81,6 +81,7 @@
                 <field name="marca" string="Marca" />
                 <field name="model" string="Model" />
                 <field name="preu" string="Preu" />
+                <field name="currency_id" string="Moneda"/>
                 <field name="segona_ma" string="Vehicle de segona ma" />
                 <field name="description" string="Descripció del vehicle" />
                 <field name="concesionari" widget="selection" />
