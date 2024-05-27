@@ -27,9 +27,5 @@
         'views/views.xml',
         'views/templates.xml'
     ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo/demo.xml',
-    ],
     'application': True
 }
