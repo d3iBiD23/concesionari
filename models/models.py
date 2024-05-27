@@ -41,4 +41,4 @@ class cotxe(models.Model):
     segona_ma = fields.Boolean()
     description = fields.Text()
     concesionari = fields.Many2one('concesionari.concesionari', 'Concesionari', ondelete="cascade")
-    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: selv.env.company.currency_id)
+    currency_id = fields.Many2one('res.currency', string='Currency', default=lambda self: self.env.company.currency_id)
