@@ -38,7 +38,7 @@
                                     </td>
                                     <td><t t-esc="vehicle.marca"/></td>
                                     <td><t t-esc="vehicle.model"/></td>
-                                    <td><t t-esc="vehicle.preu"/></td>
+                                    <td><t t-esc="vehicle.preu"/>€</td>
                                     <td><t t-esc="vehicle.segona_ma and 'Sí' or 'No'"/></td>
                                     <td><t t-esc="vehicle.description"/></td>
                                 </tr>
