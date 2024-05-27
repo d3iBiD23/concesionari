@@ -96,7 +96,7 @@
     id="concesionari_report"
     model="concesionari.concesionari"
     string="Informe Concesionari"
-    report_type="qweb-html"
+    report_type="qweb-pdf"
     name="concesionari.report_concesionari_template"
     file="concesionari.report_concesionari_template"
     print_report_name="'Informe de Concesionari - %s' % (object.name)"
